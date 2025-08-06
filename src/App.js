@@ -19,10 +19,23 @@ function Logo() {
 }
 
 function Form() {
+  function handleSubmit(e) {
+    e.preventDefault();
+    console.log(e.target.test.value);
+  }
+
   return (
-    <div className="add-form">
+    <form className="add-form" onSubmit={handleSubmit}>
       <h3>What do you need for your trip?</h3>
-    </div>
+
+      <select>
+        {Array.from({ length: 20 }, (_, i) => i + 1).map((num) => (
+          <option value={num}>{num}</option>
+        ))}
+      </select>
+      <input type="text" placeholder="Item..." name="test" />
+      <button>Add</button>
+    </form>
   );
 }
 
