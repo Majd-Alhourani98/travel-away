@@ -21,7 +21,11 @@ export default function App() {
   }
 
   function handleClearList() {
-    setItems([]);
+    const confirmed = window.confirm(
+      "Are you sure you want to delete all items"
+    );
+
+    if (confirmed) setItems([]);
   }
 
   return (
@@ -117,7 +121,7 @@ function PackingList({ items, onDeleteItem, onToggleItem, onClearList }) {
       </ul>
 
       <div
-        className="action"
+        className="actions"
         value={sortBy}
         onChange={(e) => setSortBy(e.target.value)}
       >
