@@ -23,6 +23,12 @@ function Logo() {
 function Form() {
   const [description, setDescription] = useState("");
   const [quantity, setQuantity] = useState(1);
+  const [items, setItems] = useState([]);
+
+  function handleAddItems(item) {
+    // setItems((item) => items.push(item)); // NOT GOOD: mutation
+    setItems((item) => [...items, item]);
+  }
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -35,6 +41,7 @@ function Form() {
       id: Date.now(),
     };
 
+    handleAddItems(newItem);
     setDescription("");
     setQuantity("");
     console.log(newItem);
